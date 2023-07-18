@@ -135,12 +135,12 @@ void forward_propagation(Data *data, Model *model, double *loss, double *accurac
     int predicted_label = 0;
     int target_label_found = 0;
 
-    #pragma omp parallel for reduction(max : max_output)
+    //#pragma omp parallel for reduction(max : max_output)
     for (int i = 1; i < OUTPUT_SIZE; ++i)
     {
         if (output[i] > max_output)
         {
-            #pragma omp critical
+            //#pragma omp critical
             {
                 if (output[i] > max_output)
                 {
@@ -387,7 +387,7 @@ int main()
 {
 omp_set_num_threads(8);
 int n_th = omp_thread_count();
-printf("Init main %d\n",n_th);
+printf("Nb thread = %d\n",n_th);
     clock_t start, end;
     double cpu_time_used;
     start = clock();
@@ -397,7 +397,7 @@ printf("Init main %d\n",n_th);
     clock_t start1, end1;
     double cpu_time_used1;
     start1 = clock();
-#pragma omp parallel for schedule(dynamic, 1000)
+#pragma omp parallel for schedule(dynamic, 500)
     for (int i = 0; i < TRAINING_SIZE; ++i)
     {
         char filename[30];
@@ -411,7 +411,7 @@ printf("Init main %d\n",n_th);
 
     cpu_time_used1 = ((double)(end1 - start1)) / (CLOCKS_PER_SEC * n_th);
 
-    printf("Load train in %.2f seconds\n", cpu_time_used1);
+    printf("Load train data in %.2f seconds\n", cpu_time_used1);
 
  clock_t start3, end3;
     double cpu_time_used3;
