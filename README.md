@@ -14,4 +14,4 @@ Parallelized Neural Network Training using OpenMP in C
 
 # Without Parellelization
 
-![](results/simple_nn.png)
+![](results/simple_nn.jpg)
