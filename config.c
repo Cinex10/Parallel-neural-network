@@ -1,0 +1,9 @@
+#define INPUT_SIZE 784 // 28x28 pixels
+#define HIDDEN_SIZE1 128
+#define HIDDEN_SIZE2 64
+#define OUTPUT_SIZE 10
+#define LEARNING_RATE 0.001
+#define EPOCHS 2
+#define BATCH_SIZE 32
+#define TRAINING_SIZE 60000
+#define TESTING_SIZE 10000
